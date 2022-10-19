@@ -1,0 +1,40 @@
+boy:
+  - name: Itsuki Shu
+    img: images/shu.png
+    series: Ensemble Stars
+  
+  - name: Shinkai Kanata
+    img: images/kanata.png
+    series: Ensemble Stars
+
+  - name: Sherlock Holmes
+    img: images/holmes.png
+    series: Dai Gyakuten Saiban
+
+  - name: Mikotoba Yuujin
+    img: images/mikotoba.png
+    series: Dai Gyakuten Saiban
+
+  - name: Robin Balse
+    img: images/robin.jpg
+    series: Mairimashita! Iruma-kun
+
+  - name: Orias Oswell
+    img: images/orias.png
+    series: Mairimashita! Iruma-kun
+
+  - name: March Marbas
+    img: images/marbas.jpg
+    series: Mairimashita! Iruma-kun
+
+  - name: Mr. Compress
+    img: images/compress.jpg
+    series: My Hero Academia
+
+  - name: Blackjack
+    img: images/blackjack.jpg
+    series: Blackjack
+
+  - name: Xeno H. Wingfield
+    img: images/xeno.jpg
+    series: Dr. Stone

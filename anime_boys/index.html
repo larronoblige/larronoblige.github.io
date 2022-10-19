@@ -1,0 +1,25 @@
+---
+layout: main
+title: anime boys
+---
+
+<h1>Anime Boys</h1>
+<p class="subtitle">all of the anime boys i like & some honorary anime boys</p>
+
+<div class="image-row">
+    {% for chr in site.data.anime_dir.boy %}
+    <div class="chr">
+        <img src="{{ chr.img }}" class="chr-img">
+        <p class="chr-name">{{ chr.name }}</p>
+        <p class="chr-summary">{{ chr.series }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<h4>honorary anime boys</h4>
+<ul>
+    <li>Arsène Lupin from the Arsène Lupin novels</li>
+    <li>Justin Ganimard from the Arsène Lupin novels</li>
+    <li>Théodore Béchoux from the Arsène Lupin novels</li>
+    <li>Juve from Fantômas</li>
+</ul>

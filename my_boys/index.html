@@ -1,0 +1,22 @@
+---
+layout: main
+title: my boys
+---
+
+<h1>OCs</h1>
+
+{% for group in site.data.oc_directory.group %}
+<h2>{{ group.title }}</h2>
+<p class="subtitle">{{ group.series }}</p>
+<div class="image-row">
+    {% for chr in group.members %}
+    <div class="chr">
+        <a href="{{ chr.link }}">
+            <img src="{{ chr.img }}" class="chr-img">
+        </a>
+        <p class="chr-name"><a href="{{ chr.link }}">{{ chr.name }}</a></p>
+        <p class="chr-summary">{{ chr.summary }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}

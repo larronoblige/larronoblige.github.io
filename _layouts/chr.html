@@ -1,0 +1,57 @@
+---
+layout: main
+---
+{% assign chr = site.data.ocs[page.chr] %}
+
+<div class="row">
+    <div class="infobox">
+        <div class="tab">
+            <button class="tablinks" onclick="openImage(event, 'Unit')" id="default">Unit</button>
+            <button class="tablinks" onclick="openImage(event, 'Summer')">Summer</button>
+            <button class="tablinks" onclick="openImage(event, 'Winter')">Winter</button>
+          </div>
+          
+          {% for img in chr.img %}
+          <div id="Unit" class="tabcontent">
+            <a href="{{ img.unit }}"><img src="{{ img.unit }}" class="infobox-img"></a>
+          </div>
+          
+          <div id="Summer" class="tabcontent">
+            <a href="{{ img.summer }}"><img src="{{ img.summer }}" class="infobox-img"></a>
+          </div>
+          
+          <div id="Winter" class="tabcontent">
+            <a href="{{ img.winter }}"><img src="{{ img.winter }}" class="infobox-img"></a>
+          </div>
+          {% endfor %}
+        
+        <div class="infobox-info">
+        {% for detail in chr.features %}
+            {% for item in detail %}
+            <div class="chr-row">
+                <p>{{ item[0] }}:</p>
+                <p>{{ item[1] }}</p>
+            </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+
+    <div style="flex: 80%;margin:1.5em;">
+        <h1>{{ chr.name }}</h1>
+            {{ content }}
+
+            <h3>Art</h3>
+            {% for detail in chr.art %}
+            <div class="image-row">
+                {% for item in detail %}
+                <a href="{{ item[1] }}"><img src="{{ item[1] }}" class="chr-img"></a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.getElementById("default").click();
+</script>
