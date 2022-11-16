@@ -1,0 +1,20 @@
+---
+layout: main
+title: home
+---
+<p>kyaaaaa theres nothing here yet have a random shu from my files</p>
+<div id="shurand"></div>
+
+<script>
+// shgenerator
+document.onload = shuRand()
+
+function shuRand() {
+  let files = ['(Astraea_of_Discipline)_Shu_Itsuki_CG2.png', '(Leader_of_Art)_Shu_Itsuki_CG_webp.png', '(Victorian_Investigation)_Shu_Itsuki_Chibi.webp', '1000.png', 'babygirl.gif', 'babygirl.png', 'bald.jpg', 'bbaygirl.png', 'bbaygirls.png', 'bloomed.jpg', 'buiyughbjakj.png', 'card_full1_3296_normal.png', 'cofee.gif', 'criminallypretty.gif', 'cutie.png', 'gettindown.gif', 'gif1.gif', 'kyaaa.gif', 'latest.png', 'listen to me very clsoely young man.png', 'megane.png', 'mwa.gif', 'mywife.jpg', 'ONE.gif', 'Screenshot_20221115_144434.jpg', 'shu.png', 'shudead.png', 'shumlem.png', 'Shu_Itsuki_Work_Birthday_Flowers_Chibi_12_webp.png', 'sniff.gif', 'thankushu.gif', 'unbloomed.jpg', 'whatifyouweregorgeous.gif', 'wife.gif', 'wife.png', 'yaaas.png'];
+  var random = Math.floor(Math.random() * files.length);
+  console.log(files[random]);
+  let result = '/assets/shugen/' + files[random];
+  let image = `<img src="` + result + `">`;
+  document.getElementById('shurand').innerHTML = image;
+};
+</script>

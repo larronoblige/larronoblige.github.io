@@ -1,3 +1,4 @@
+// tabs i stole
 function openImage(evt, imageName) {
     // Declare all variables
     var i, tabcontent, tablinks;

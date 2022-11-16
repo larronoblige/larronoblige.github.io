@@ -7,40 +7,60 @@
   <meta name="description" content="" />
   <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/enstars.js"></script>
+  <!-- dont do this -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Quicksand&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
-    <div id="main">
-        <!-- header -->
-        <div class="row">
-            <div class="col">
-                <p class="title"><a href="/">larron oblige</a></p>
-                <p class="subtitle">&middot; &mdash; thief's obligation</p>
+    <!-- header -->
+    <div class="header">
+        <!-- title -->
+        <h1 class="title"><a href="/">larron oblige</a></h1>
+    </div>
+    <!-- center panel -->
+    <div class="main">
+        <!-- navbar -->
+        <div class="navbar">
+            <ul class="no-ul flex" style="justify-content: space-around;">
+                <li><a href="/about.md">about</a></li>
+                <li><a href="/my_boys/index.html">my ocs</a></li>
+                <li><a href="/anime_boys/index.html">anime boys</a></li>
+                <li><a href="/enstars.html">engstars calc</a></li>
+            </ul>
+        </div>
+        
+        <div class="flex" style="justify-content:space-between;">
+            <div class="content">
+                <p>kyaaaaa theres nothing here yet have a random shu from my files</p>
+<div id="shurand"></div>
+
+<script>
+// shgenerator
+document.onload = shuRand()
+
+function shuRand() {
+  let files = ['(Astraea_of_Discipline)_Shu_Itsuki_CG2.png', '(Leader_of_Art)_Shu_Itsuki_CG_webp.png', '(Victorian_Investigation)_Shu_Itsuki_Chibi.webp', '1000.png', 'babygirl.gif', 'babygirl.png', 'bald.jpg', 'bbaygirl.png', 'bbaygirls.png', 'bloomed.jpg', 'buiyughbjakj.png', 'card_full1_3296_normal.png', 'cofee.gif', 'criminallypretty.gif', 'cutie.png', 'gettindown.gif', 'gif1.gif', 'kyaaa.gif', 'latest.png', 'listen to me very clsoely young man.png', 'megane.png', 'mwa.gif', 'mywife.jpg', 'ONE.gif', 'Screenshot_20221115_144434.jpg', 'shu.png', 'shudead.png', 'shumlem.png', 'Shu_Itsuki_Work_Birthday_Flowers_Chibi_12_webp.png', 'sniff.gif', 'thankushu.gif', 'unbloomed.jpg', 'whatifyouweregorgeous.gif', 'wife.gif', 'wife.png', 'yaaas.png'];
+  var random = Math.floor(Math.random() * files.length);
+  console.log(files[random]);
+  let result = '/assets/shugen/' + files[random];
+  let image = `<img src="` + result + `">`;
+  document.getElementById('shurand').innerHTML = image;
+};
+</script>
             </div>
 
-            <div class="col" style="align-self: center;">
+            <!-- sidebar -->
+            <div class="sidebar clearfix">
+                <!-- sidebar img -->
+                <img src="/assets/sidebar.png" class="side-img">
                 <ul class="no-ul">
-                    <li>&middot;</li>
-                
-                  <li><a href="/about.md">me</a></li>
-                  <li>&middot;</li>
-                
-                  <li><a href="/anime_boys/index.html">anime boys</a></li>
-                  <li>&middot;</li>
-                
-                  <li><a href="/my_boys/index.html">my boys</a></li>
-                  <li>&middot;</li>
-                
+                    <li><a href="https://twitter.com/larron_oblige">twitter</a></li>
+                    <li><a href="https://nyansieur.tumblr.com">tumblr</a></li>
                 </ul>
             </div>
         </div>
-        <!-- end header -->
-        <hr>
-
-        <!-- body -->
-            <p>wowoowow</p>
-
-        <!-- end body -->
     </div>
 </body>
-</html>

@@ -2,9 +2,12 @@
 layout: main
 ---
 {% assign chr = site.data.ocs[page.chr] %}
-
-<div class="row">
-    <div class="infobox">
+<h1 style="text-align:center;">wip its broken as hell rn</h1>
+<div class="flex">
+    <div><div class="infobox">
+      <h1 style="margin: 0;">{{ chr.firstname }} {{ chr.surname }}</h1>
+      <p class="subtitle">{{ chr.namejp }}</p>
+      <h3><i>{{ chr.title }}</i></h3>
         <div class="tab">
             <button class="tablinks" onclick="openImage(event, 'Unit')" id="default">Unit</button>
             <button class="tablinks" onclick="openImage(event, 'Summer')">Summer</button>
@@ -24,22 +27,47 @@ layout: main
             <a href="{{ img.winter }}"><img src="{{ img.winter }}" class="infobox-img"></a>
           </div>
           {% endfor %}
+
+        <h4>{{ chr.quote }}</h4>
         
         <div class="infobox-info">
         {% for detail in chr.features %}
             {% for item in detail %}
             <div class="chr-row">
-                <p>{{ item[0] }}:</p>
+                <p id="key">{{ item[0] }}</p>
                 <p>{{ item[1] }}</p>
             </div>
             {% endfor %}
         {% endfor %}
         </div>
-    </div>
+    </div></div>
 
     <div style="flex: 80%;margin:1.5em;">
-        <h1>{{ chr.name }}</h1>
             {{ content }}
+
+          <h3>Relationships</h3>
+              {% for rel in chr.relationships %}
+              <div class="relationship-box">
+                <div>
+                  <a href="{{ rel.link }}"><img src="{{ rel.icon }}" class="chr-icon" style="float: left;"></a>
+                  <div class="row" style="align-items: center;">
+                    <h4 style="margin: 0;">{{ rel.firstname }} {{ rel.surname }}</h4> &nbsp; &mdash; &nbsp; <i>"{{ rel.called }}"</i>
+                  </div>
+                  <p>{{ rel.related }}</p>
+                  <p>{{ rel.felt }}</p>
+                </div>
+
+                <div style="text-align: right;">
+                <img src="{{ chr.icon }}" class="chr-icon" style="float: right;">
+                <div class="flex" style="align-items: center;justify-content: right;">
+                  <h4 style="margin: 0;">{{ chr.firstname }} {{ chr.surname }}</h4> &nbsp; &mdash; &nbsp; <i>"{{ rel.calls }}"</i>
+                </div>
+                <p>{{ rel.relates }}</p>
+                <p>{{ rel.feels }}</p>
+              </div>
+              </div>
+              {% endfor %}
+            
 
             <h3>Art</h3>
             {% for detail in chr.art %}

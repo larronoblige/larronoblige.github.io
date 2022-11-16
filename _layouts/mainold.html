@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{ page.title }} &mdash; larron oblige</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+  <script src="/assets/js/main.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <!-- header -->
+        <div class="row">
+            <div class="col">
+                <p class="title"><a href="/">larron oblige</a></p>
+                <p class="subtitle">&middot; &mdash; thief's obligation</p>
+            </div>
+
+            <div class="col" style="align-self: center;">
+                <ul class="no-ul">
+                    <li>&middot;</li>
+                {% for item in site.data.header %}
+                  <li><a href="{{ item.link }}">{{ item.name }}</a></li>
+                  <li>&middot;</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- end header -->
+        <hr>
+
+        <!-- body -->
+            {{ content }}
+        <!-- end body -->
+    </div>
+</body>
+</html>

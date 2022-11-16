@@ -1,25 +1,71 @@
-name: Hino Kazuki
+firstname: Hino
+surname: Kazuki
+namejp: 一輝 姫乃
+title: Zombie Idol
+quote: hkagshdbmnasd
+icon: https://media.discordapp.net/attachments/888469556627120148/1031092898281816124/IMG_4821.png?width=555&height=670
 img:
-  - unit: https://media.discordapp.net/attachments/888469556627120148/1031092898281816124/IMG_4821.png?width=555&height=670
+  - unit: /my_boys/images/hino/unit.png
     summer: tbd
-    winter: tbd
+    winter: /my_boys/images/hino/winter.png
 features:
   - Age: 19
     Graduated From:
     Circles: 
-    Unit: 
+    Unit: Phantomb
     Height: 162cm (5'4)
     Date of Birth: 
     Roomates: 
     Handedness: 
-    Blood Type:
+    Blood Type: B
     Likes: 2000's J-Fashion
     Dislikes: Tight spaces
     Favorite Food: 
     Family:
-    Hobby:
+    Hobby: Knitting
     Specialty:
     Image Color:
     Signature:
 art:
   - 1: https://media.discordapp.net/attachments/888469556627120148/1031083272379322398/IMG_4819.png?width=700&height=670
+relationships:
+  - firstname: Yu
+    surname: Nomura
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Close Friend
+    related: Close Friend
+    feels: 
+    felt: 
+    calls: Hino-chan 
+    called: Yu
+  - firstname: Ryo
+    surname: 
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: 
+    calls: Hino-chan 
+    called: Ryo
+  - firstname: Mika
+    surname: Kagehira
+    icon: /my_boys/images/mika.png
+    link: https://ensemble-stars.fandom.com/wiki/Mika_Kagehira
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: 
+    calls: Hino-kun
+    called: Mika
+  - firstname: Shu
+    surname: Itsuki
+    icon: /my_boys/images/shu.png
+    link: https://ensemble-stars.fandom.com/wiki/Shu_Itsuki
+    relates: Acquaintance
+    related: Acquaintance
+    feels: 
+    felt: Deeply offended by Hino's hair. Otherwise neutral towards him.
+    calls: Kazuki
+    called: Isusan (いすサン)

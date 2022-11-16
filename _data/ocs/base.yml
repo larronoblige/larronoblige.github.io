@@ -1,8 +1,13 @@
-name: 
+firstname: 
+surname: 
+namejp: 
+title: 
+quote: 
+icon: 
 img:
-  - unit: 
-    summer: 
-    winter: 
+  - unit: /my_boys/images/
+    summer: /my_boys/images/
+    winter: /my_boys/images/
 features:
   - Age: 
     Graduated From:
@@ -12,13 +17,25 @@ features:
     Date of Birth: 
     Roomates: 
     Handedness: 
-    Blood Type:
+    Blood Type: 
     Likes: 
     Dislikes: 
     Favorite Food: 
     Family:
-    Hobby:
+    Hobby: 
     Specialty:
     Image Color:
     Signature:
 art:
+  - 1: 
+relationships:
+  - firstname: 
+    surname: 
+    icon: 
+    link: 
+    relates: 
+    related: 
+    feels: 
+    felt: 
+    calls:  
+    called: 
