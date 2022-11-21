@@ -1,0 +1,85 @@
+---
+layout: main
+title: enstars generator
+--- 
+<h2>enstars prompt generator</h2>
+<p>sorry i made this for my ocs</p>
+
+<form action="javascript:submit()">
+    <label for="ocName">oc name</label>
+        <br>
+    <input type="text" name="ocName" id="ocName"></input>
+        <br><br>
+    <input type="submit" value="submit" />
+</form>
+
+<div id="result"></div>
+
+<script>
+submit = () => {
+    var ocName = document.getElementsByName("ocName")[0].value;
+    rollRes = rollType();
+    v = choices(rollRes);
+    html(ocName, rollRes, v);
+}
+
+function rollArray(array) {
+    let chrRoll = Math.floor(Math.random() * array.length);
+    return array[chrRoll];
+}
+
+function rollType() {
+    var typeOpt = ['es card 1', 'es card 2', 'feature scout 1', 'feature scout 2', 'fusion unit', 'cover song', 'shuffle unit'];
+    rollRes = rollArray(typeOpt);
+    console.log(rollRes);
+    return rollRes;
+}
+
+function choices(rollRes) {
+    var chrOpt = ["eichi", "wataru", "tori", "yuzuru", "hokuto", "subaru", "makoto", "mao", "chiaki", "kanata", "tetora", "midori", "shinobu", "hiiro", "aira", "mayoi", "tatsumi", "nagisa", "hiyori", "ibara", "jun", "shu", "mika", "yuta", "hinata", "rinne", "himeru", "kohaku", "niki", "rei", "kaoru", "koga", "adonis", "tomoya", "nazuna", "mitsuru", "hajime", "keito", "kuro", "souma", "tsukasa", "leo", "izumi", "ritsu", "arashi", "natsume", "tsumugi", "sora"];
+    var unitOpt = ["fine", "trickstar", "ryuseitai", "alkaloid", "eden", "valkyrie", "2wink", "crazy:b", "undead", "ra*bits", "akatsuki", "knights", "switch", "mam", "double face"];
+    var array3 = [1,2,3];
+    if(rollRes == 'fusion unit') {
+        /* give unit from unitOpt */
+        v = rollArray(unitOpt);
+    } else if(rollRes == 'cover song') {
+        /* " " */
+        v = rollArray(unitOpt);
+    } else if(rollRes == 'shuffle unit') {
+        /* give 5 chrs from chrOpt */
+        let chrArray = [];
+        for(let i = 0; i < 4; i++) {
+            append = rollArray(chrOpt);
+            if(append in chrArray){
+                append = rollArray(chrOpt);
+            } else {
+                chrArray.push(append);
+            }
+        }
+        v = chrArray;
+
+    } else {
+        /* give 1, 2, or 3 random chrs */
+        let chrArray = [];
+        let num = Math.floor(Math.random() * 3);
+        for(let i = 0; i < num; i++) {
+            append = rollArray(chrOpt);
+            chrArray.push(append);
+        }
+        if(chrArray == '') {
+            v = 'producer';
+        } else {
+            v = chrArray;
+        }
+    }
+    return v;
+}
+
+function html(ocName, rollRes, v) {
+    let one = ocName + ' ';
+    let two = rollRes;
+    let three = ' with ' + v;
+    let res = one + two + three;
+    document.getElementById('result').innerHTML = res;
+}
+</script>
