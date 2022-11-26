@@ -1,0 +1,55 @@
+---
+layout: main
+---
+{% assign data = site.data.tl[page.tl] %}
+<h1>{{ data.title }}</h1>
+{{ content }}
+
+<ul>
+    {% for items in data.chapters %} 
+    {% for ch in items %}
+    {% if ch[0] != 'nAn' %}<li><a href="#{{ ch[0] }}">{{ ch[0] }}</a></li>{% endif %}
+    {% endfor %}
+{% endfor %}
+</ul>
+
+<div style="width: 60ch;margin:auto;">
+{% for items in data.chapters %}
+    {% for ch in items %}
+    {% if ch[0] != 'nAn' %}
+        <h3 id="{{ ch[0] }}">{{ ch[0] }}</h3>
+    {% endif %}
+        {% for group in ch %}
+            {% for line in group %} 
+                <div class="tl-line">
+                    {% if line.chr %}
+                    <div class="tl-name flex {{ line.chr }}">
+                        <img class="tl-icon" src="/assets/tl_icons/{{ line.chr }}.png">
+                        <div>{{ line.chr }}</div>
+                    </div>
+                    {% endif %}
+            
+                    {% if line.line %} 
+                        <div class="tl-line">
+                            {{ line.line }}
+                            {% if line.annotation %}
+                                {% for anno in line.annotation %} 
+                                    <div class="annotation tooltip">
+                                        [{{ anno.number }}]
+                                        <span class="tooltiptext">{{ anno.anno }}</span>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+        
+                {% if line.image %} 
+                    <a href="{{ line.image }}"><img src="{{ line.image }}" class="tl-line"></a>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <br><br>
+    {% endfor %}
+{% endfor %}
+</div>

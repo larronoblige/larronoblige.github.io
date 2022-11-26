@@ -3,10 +3,20 @@ layout: main
 ---
 {% assign chr = site.data.ocs[page.chr] %}
 <h1 style="text-align:center;">wip its broken as hell rn</h1>
+
+<div class="chr-directory">
+  <ul class="no-ul flex">
+    <li><a href="Profile.html">Profile</a></li>
+    <li><a href="Appellations.html">Appellations</a></li>
+    <li><a href="Gallery.html">Gallery</a></li>
+  </ul>
+</div>
+  <br>
+{% if page.type == 'profile' %}
 <div class="flex">
     <div><div class="infobox">
       <h1 style="margin: 0;">{{ chr.firstname }} {{ chr.surname }}</h1>
-      <p class="subtitle">{{ chr.namejp }}</p>
+      <h3 class="subtitle">{{ chr.namejp }}</h3>
       <h3><i>{{ chr.title }}</i></h3>
         <div class="tab">
             <button class="tablinks" onclick="openImage(event, 'Unit')" id="default">Unit</button>
@@ -40,7 +50,7 @@ layout: main
             {% endfor %}
         {% endfor %}
         </div>
-    </div></div>
+    </div></div><!-- end infobox -->
 
     <div style="flex: 80%;margin:1.5em;">
             {{ content }}
@@ -50,35 +60,51 @@ layout: main
               <div class="relationship-box">
                 <div>
                   <a href="{{ rel.link }}"><img src="{{ rel.icon }}" class="chr-icon" style="float: left;"></a>
-                  <div class="row" style="align-items: center;">
-                    <h4 style="margin: 0;">{{ rel.firstname }} {{ rel.surname }}</h4> &nbsp; &mdash; &nbsp; <i>"{{ rel.called }}"</i>
-                  </div>
+                  <h4 style="margin: 0;">{{ rel.firstname }} {{ rel.surname }}</h4>
                   <p>{{ rel.related }}</p>
                   <p>{{ rel.felt }}</p>
                 </div>
 
                 <div style="text-align: right;">
                 <img src="{{ chr.icon }}" class="chr-icon" style="float: right;">
-                <div class="flex" style="align-items: center;justify-content: right;">
-                  <h4 style="margin: 0;">{{ chr.firstname }} {{ chr.surname }}</h4> &nbsp; &mdash; &nbsp; <i>"{{ rel.calls }}"</i>
-                </div>
+                <h4 style="margin: 0;">{{ chr.firstname }} {{ chr.surname }}</h4>
                 <p>{{ rel.relates }}</p>
                 <p>{{ rel.feels }}</p>
               </div>
               </div>
               {% endfor %}
-            
-
-            <h3>Art</h3>
-            {% for detail in chr.art %}
-            <div class="image-row">
-                {% for item in detail %}
-                <a href="{{ item[1] }}"><img src="{{ item[1] }}" class="chr-img"></a>
-                {% endfor %}
-            </div>
-            {% endfor %}
     </div>
 </div>
+{% endif %}
+
+{% if page.type == 'appellations' %}
+<h2>Appellations</h2>
+{{ content }}
+<table class="table">
+  <th>Name</th>
+  <th>What they call {{ chr.firstname }}</th>
+  <th>What {{ chr.firstname }} calls them</th>
+  {% for rel in chr.relationships %}
+  <tr>
+    <td>{{ rel.firstname }} {{ rel.surname }}</td>
+    <td>{{ rel.calls }}</td>
+    <td>{{ rel.called }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% if page.type == 'gallery' %}
+<h2>Gallery</h2>
+{{ content }}
+{% for detail in chr.art %}
+  <div class="image-row">
+    {% for item in detail %}
+      <a href="{{ item[1] }}"><img src="{{ item[1] }}" class="chr-img"></a>
+    {% endfor %}
+  </div>
+{% endfor %}
+{% endif %}
 
 <script>
     document.getElementById("default").click();

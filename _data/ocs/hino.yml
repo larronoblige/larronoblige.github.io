@@ -1,5 +1,6 @@
 firstname: Hino
 surname: Kazuki
+unit: Phantomb
 namejp: 一輝 姫乃
 title: Zombie Idol
 quote: hkagshdbmnasd
@@ -27,7 +28,8 @@ features:
     Image Color:
     Signature:
 art:
-  - 1: https://media.discordapp.net/attachments/888469556627120148/1031083272379322398/IMG_4819.png?width=700&height=670
+  - 1: https://media.discordapp.net/attachments/888469556627120148/1031083272379322398/IMG_4819.png
+  - 2: https://media.discordapp.net/attachments/1025229016212451348/1044455879166132224/IMG_4879.png
 relationships:
   - firstname: Yu
     surname: Nomura
@@ -49,6 +51,46 @@ relationships:
     felt: 
     calls: Hino-chan 
     called: Ryo
+  - firstname: Nobunosuke Sakakibara
+    surname: 
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: 
+    calls: Kazuki-sama
+    called: Nono (のの)
+  - firstname: Luca
+    surname: Fazio
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: 
+    calls: Hino
+    called: Yau (やう)
+  - firstname: Sebastien
+    surname: Chevalier
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: 
+    related: 
+    feels: 
+    felt: 
+    calls: Hino-hiki
+    called: French Novel-san (ふつぶんサン)
+  - firstname: Edmé
+    surname: Kamiya
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: 
+    related: 
+    feels: 
+    felt: 
+    calls: Hinette
+    called: Kamiyasan (かみやサン)
   - firstname: Mika
     surname: Kagehira
     icon: /my_boys/images/mika.png
@@ -57,8 +99,8 @@ relationships:
     related: Friend
     feels: 
     felt: 
-    calls: Hino-kun
-    called: Mika
+    calls: Hino-chan
+    called: Mimikun (みみクン)
   - firstname: Shu
     surname: Itsuki
     icon: /my_boys/images/shu.png
@@ -68,4 +110,4 @@ relationships:
     feels: 
     felt: Deeply offended by Hino's hair. Otherwise neutral towards him.
     calls: Kazuki
-    called: Isusan (いすサン)
+    called: Isugisan (いすギサン)

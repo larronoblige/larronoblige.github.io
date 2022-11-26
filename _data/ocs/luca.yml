@@ -1,0 +1,92 @@
+firstname: Luca
+surname: Fazio
+unit: Phantomb
+namejp: ルーカ&middot;ファチオ
+title: 
+quote: 
+icon: /assets/tl_icons/Luca.png
+img: 
+  - unit: /my_boys/images/
+    summer: /my_boys/images/
+    winter: https://cdn.discordapp.com/attachments/888469556627120148/1044468105822359673/IMG_4880.png
+features:
+  - Age: 20
+    Graduated From: N/A
+    Circles: 
+    Unit: Phantomb
+    Height: 5'8
+    Date of Birth: 
+    Roomates: Nobunosuke, 
+    Handedness: Right
+    Blood Type: A+
+    Likes: 
+    Dislikes: 
+    Favorite Food: Onigiri
+    Family: Father
+    Hobby: Going to anime cafes
+    Specialty: Pasta from scratch
+    Image Color:
+    Signature:
+art:
+  - 1: https://cdn.discordapp.com/attachments/888469556627120148/1044468105822359673/IMG_4880.png
+relationships:
+  - firstname: Yu
+    surname: Nomura
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Close Friend
+    related: Close Friend
+    feels: 
+    felt: Felt bad for Luca after seeing everyone avoid him, and decided to be his friend. 
+    calls: Luca
+    called: Yu
+  - firstname: Ryo
+    surname: 
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: 
+    calls: Luca 
+    called: Ryo
+  - firstname: Nobunosuke
+    surname: Sakakibara
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: Is happy to have a good friend who literally never leaves his side.
+    felt: Believes Luca to be a bumbling idiot and fears for his safety. Has taken it upon himself to guard him.
+    calls: Fazio-hime
+    called: Nobu
+  - firstname: Hino
+    surname: Kazuki
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: Helps Luca dye his hair and buy clothes. 
+    calls: Yau (やう)
+    called: Hino
+  - firstname: Sebastien
+    surname: Chevalier
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Friend
+    related: Friend
+    feels: 
+    felt: 
+    calls: Luca
+    called: Sebastien
+  - firstname: Edmé
+    surname: Kamiya
+    icon: https://via.placeholder.com/300
+    link: 
+    relates: Acquaintance
+    related: Acquaintance
+    feels: 
+    felt: 
+    calls: Lunon
+    called: Edmé

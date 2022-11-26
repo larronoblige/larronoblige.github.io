@@ -51,8 +51,18 @@ img { max-width: 100%; }
 
 .chr-icon { height: 80px; width: 80px; object-fit: cover; border: #201518 solid 1px; margin: 0 0.5em; }
 
+.chr-directory { width: 100%; }
+
+.chr-directory > ul { justify-content: space-around; }
+
 /* relationship */
 .relationship-box { max-height: 16em; width: 100%; border: #201518 solid 1px; padding: 0.5em; margin: 0.5em; overflow: auto; scrollbar-width: thin; }
+
+.table { width: 100%; text-align: center; }
+
+td, th { padding: 1em; }
+
+tr:nth-child(even) { background-color: #eee; }
 
 /**** infobox ****/
 .infobox { width: 25em; border: #201518 solid 1px; padding: 0.5em; }
@@ -85,3 +95,28 @@ img { max-width: 100%; }
 
 /* forms */
 select, input { border-radius: 0px; border: solid 1px #D88F9A; padding: 0.5em; background-color: transparent; }
+
+/* translations */
+.tl-line { margin-bottom: 2.5em; }
+
+.tl-icon { margin-right: 1em; height: 3.5em; width: 3.5em; object-fit: cover; align-self: center; }
+
+.tl-name { margin-bottom: 1em; width: 100%; align-items: center; }
+
+.annotation { display: inline; vertical-align: super; font-size: smaller; }
+
+/* tl chrs */
+.Shu { border-bottom: 1px solid #D88F9A; }
+
+.Tsumugi { border-bottom: 1px solid #134954; }
+
+.Sebastien { border-bottom: 1px solid #333; }
+
+/* Tooltip container */
+.tooltip { position: relative; display: inline-block; border-bottom: 1px dotted black; /* If you want dots under the hoverable text */ }
+
+/* Tooltip text */
+.tooltip .tooltiptext { visibility: hidden; background-color: #BD6E7A; color: #fff; text-align: center; padding: 0.5em; border-radius: 6px; overflow-wrap: break-word; max-width: 25em; bottom: 100%; left: 50%; margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */ position: absolute; z-index: 1; }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext { visibility: visible; }
