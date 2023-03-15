@@ -1,0 +1,328 @@
+---
+layout: main 
+---
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0">
+<title>Picker</title>
+<style>
+
+button {
+    font-family:inherit;
+    cursor:pointer;
+    border:0;
+    padding:0.3em 0.5em;
+    background:#CCC;
+    color:#000;
+}
+
+button:hover {
+    background:#DDD;
+}
+
+button.disabled {
+    background:#DDD;
+    color:#888;
+    cursor:not-allowed;
+}
+
+button.disabled:hover {
+    background:#DDD;
+}
+
+#pick {
+    background:#D88F9A;
+    color:#FFF;
+    font-size:larger;
+    font-weight:bold;
+    width:6em;
+    margin-right:10px;
+}
+
+#pick.disabled {
+    background:#BD6E7A;
+}
+
+#pick:hover {
+    background:#BD6E7A;
+}
+
+.item-list {
+    padding:0.2em;
+    list-style-type:none;
+}
+
+.item-list li {
+    margin: 0 4px;
+    display:inline-block;
+    height:150px;
+    border:4px solid transparent;
+    text-align:center;
+    position:relative;
+    object-fit: contain;
+    overflow:hidden;
+    color:#000;
+    transition: transform 0.5s;
+}
+
+.item-list li img {
+    vertical-align:middle;
+    max-height:100%;
+    max-width:100%;
+}
+
+.item-list li span {
+    display:inline-block;
+    vertical-align:middle;
+}
+
+#evaluating li {
+    cursor:pointer;
+}
+
+#favorites li {
+    cursor:move;
+}
+
+.item-list li:hover {
+    background:#D88F9A;
+    transform: scale(110%);
+}
+
+.item-list.sorting li:hover {
+    background:#F7F7F7;
+}
+
+#evaluating li.selected {
+    border:4px solid #BD6E7A;
+}
+
+#evaluating, #buttons {
+    text-align:center;
+    margin:auto;
+}
+
+#evaluating li.notice {
+    width:auto;
+    height:auto;
+    max-width:260px;
+    margin:auto;
+    background:#F7F7F7;
+    border-radius:10px;
+    padding:30px 30px;
+    color:#000;
+    text-align:center;
+    cursor:auto;
+    font-size:10pt;
+}
+
+#buttons {
+    position:relative;
+    z-index:3;
+    margin-top: 0.5em;
+}
+</style>
+</head>
+<body>
+<h1>Picker</h1>
+
+<p>im too scared to check if this is like crazy broken on mobile or not<br>
+<a href="https://github.com/antialiasis/favorite-picker">code github</a></p>
+<a href="../sorter/index.html">back to character choices</a>
+
+<div id="container">
+
+<div id="picking">
+<ul id="evaluating" class="item-list">
+</ul>
+
+<p id="buttons"><button id="pick">Pick</button> <button id="pass">Pass</button> <button id="undo">Undo</button> <button id="redo">Redo</button></p>
+</div>
+
+<div id="secondary">
+<h2>Found favorites</h2>
+
+<ol id="favorites" class="item-list">
+</ol>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="picker.js"></script>
+<script src="picker-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
+<script>
+'use strict';
+
+// breaks down crying
+var ChrOpt = {
+    sora2 : [
+        {id: 'A_Sleepover_Close_By', name: 'A Sleepover Close By', image: 'images/sora2/A_Sleepover_Close_By.webp'},
+        {id: 'A_Sleepover_Close_By_Bloomed', name: 'A Sleepover Close By Bloomed', image: 'images/sora2/A_Sleepover_Close_By_Bloomed.webp'},
+        {id: 'Beyond_the_Illusion', name: 'Beyond the Illusion', image: 'images/sora2/Beyond_the_Illusion.webp'},
+        {id: 'Beyond_the_Illusion_Bloomed', name: 'Beyond the Illusion Bloomed', image: 'images/sora2/Beyond_the_Illusion_Bloomed.webp'},
+        {id: 'Cheerful_Rock', name: 'Cheerful Rock', image: 'images/sora2/Cheerful_Rock.webp'},
+        {id: 'Cheerful_Rock_Bloomed', name: 'Cheerful Rock Bloomed', image: 'images/sora2/Cheerful_Rock_Bloomed.webp'},
+        {id: 'Donning_the_Overlapping_Colors_of_Myself', name: 'Donning the Overlapping Colors of Myself', image: 'images/sora2/Donning_the_Overlapping_Colors_of_Myself.webp'},
+        {id: 'Donning_the_Overlapping_Colors_of_Myself_Bloomed', name: 'Donning the Overlapping Colors of Myself Bloomed', image: 'images/sora2/Donning_the_Overlapping_Colors_of_Myself_Bloomed.webp'},
+        {id: 'Feelings_of_Unfamiliarity', name: 'Feelings of Unfamiliarity', image: 'images/sora2/Feelings_of_Unfamiliarity.webp'},
+        {id: 'Feelings_of_Unfamiliarity_Bloomed', name: 'Feelings of Unfamiliarity Bloomed', image: 'images/sora2/Feelings_of_Unfamiliarity_Bloomed.webp'},
+        {id: 'Gentle_Interactions', name: 'Gentle Interactions', image: 'images/sora2/Gentle_Interactions.webp'},
+        {id: 'Gentle_Interactions_Bloomed', name: 'Gentle Interactions Bloomed', image: 'images/sora2/Gentle_Interactions_Bloomed.webp'},
+        {id: 'Glittering_Yellow_Comet', name: 'Glittering Yellow Comet', image: 'images/sora2/Glittering_Yellow_Comet.webp'},
+        {id: 'Glittering_Yellow_Comet_Bloomed', name: 'Glittering Yellow Comet Bloomed', image: 'images/sora2/Glittering_Yellow_Comet_Bloomed.webp'},
+        {id: 'Happy_Surprise', name: 'Happy Surprise', image: 'images/sora2/Happy_Surprise.webp'},
+        {id: 'Happy_Surprise_Bloomed', name: 'Happy Surprise Bloomed', image: 'images/sora2/Happy_Surprise_Bloomed.webp'},
+        {id: 'NewDi&#39;s_Smile', name: 'NewDi&#39;s Smile', image: 'images/sora2/NewDi\'s_Smile.webp'},
+        {id: 'NewDi&#39;s_Smile_Bloomed', name: 'NewDi&#39;s Smile Bloomed', image: 'images/sora2/NewDi\'s_Smile_Bloomed.webp'},
+        {id: 'Righteous_Thief', name: 'Righteous Thief', image: 'images/sora2/Righteous_Thief.webp'},
+        {id: 'Righteous_Thief_Bloomed', name: 'Righteous Thief Bloomed', image: 'images/sora2/Righteous_Thief_Bloomed.webp'},
+        {id: 'Skilled_Carat', name: 'Skilled Carat', image: 'images/sora2/Skilled_Carat.webp'},
+        {id: 'Skilled_Carat_Bloomed', name: 'Skilled Carat Bloomed', image: 'images/sora2/Skilled_Carat_Bloomed.webp'},
+        {id: 'Sky-Color_Crystal', name: 'Sky-Color Crystal', image: 'images/sora2/Sky-Color_Crystal.webp'},
+        {id: 'Sky-Color_Crystal_Bloomed', name: 'Sky-Color Crystal Bloomed', image: 'images/sora2/Sky-Color_Crystal_Bloomed.webp'},
+        {id: 'Sports_Festival_Specialty', name: 'Sports Festival Specialty', image: 'images/sora2/Sports_Festival_Specialty.webp'},
+        {id: 'Sports_Festival_Specialty_Bloomed', name: 'Sports Festival Specialty Bloomed', image: 'images/sora2/Sports_Festival_Specialty_Bloomed.webp'},
+        {id: 'To_Know_the_Unknown', name: 'To Know the Unknown', image: 'images/sora2/To_Know_the_Unknown.webp'},
+        {id: 'To_Know_the_Unknown_Bloomed', name: 'To Know the Unknown Bloomed', image: 'images/sora2/To_Know_the_Unknown_Bloomed.webp'},
+    ],
+    natsume2 : [
+        {id: 'Compromise_is_Also_Friendship', name: 'Compromise is Also Friendship', image: 'images/natsume2/Compromise_is_Also_Friendship.webp'},
+        {id: 'Compromise_is_Also_Friendship_Bloomed', name: 'Compromise is Also Friendship Bloomed', image: 'images/natsume2/Compromise_is_Also_Friendship_Bloomed.webp'},
+        {id: 'Cruise_of_Encounters', name: 'Cruise of Encounters', image: 'images/natsume2/Cruise_of_Encounters.webp'},
+        {id: 'Cruise_of_Encounters_Bloomed', name: 'Cruise of Encounters Bloomed', image: 'images/natsume2/Cruise_of_Encounters_Bloomed.webp'},
+        {id: 'Duality_and_Surprise', name: 'Duality and Surprise', image: 'images/natsume2/Duality_and_Surprise.webp'},
+        {id: 'Duality_and_Surprise_Bloomed', name: 'Duality and Surprise Bloomed', image: 'images/natsume2/Duality_and_Surprise_Bloomed.webp'},
+        {id: 'Flaring_Ideals', name: 'Flaring Ideals', image: 'images/natsume2/Flaring_Ideals.webp'},
+        {id: 'Flaring_Ideals_Bloomed', name: 'Flaring Ideals Bloomed', image: 'images/natsume2/Flaring_Ideals_Bloomed.webp'},
+        {id: 'Foreknowing_Tiger', name: 'Foreknowing Tiger', image: 'images/natsume2/Foreknowing_Tiger.webp'},
+        {id: 'Foreknowing_Tiger_Bloomed', name: 'Foreknowing Tiger Bloomed', image: 'images/natsume2/Foreknowing_Tiger_Bloomed.webp'},
+        {id: 'Guide_Harboring_Wishes', name: 'Guide Harboring Wishes', image: 'images/natsume2/Guide_Harboring_Wishes.webp'},
+        {id: 'Guide_Harboring_Wishes_Bloomed', name: 'Guide Harboring Wishes Bloomed', image: 'images/natsume2/Guide_Harboring_Wishes_Bloomed.webp'},
+        {id: 'Leader_of_Magic', name: 'Leader of Magic', image: 'images/natsume2/Leader_of_Magic.webp'},
+        {id: 'Leader_of_Magic_Bloomed', name: 'Leader of Magic Bloomed', image: 'images/natsume2/Leader_of_Magic_Bloomed.webp'},
+        {id: 'Magic_and_StarFes', name: 'Magic and StarFes', image: 'images/natsume2/Magic_and_StarFes.webp'},
+        {id: 'Magic_and_StarFes_Bloomed', name: 'Magic and StarFes Bloomed', image: 'images/natsume2/Magic_and_StarFes_Bloomed.webp'},
+        {id: 'NewDi&#39;s_Eccentric', name: 'NewDi&#39;s Eccentric', image: 'images/natsume2/NewDi\'s_Eccentric.webp'},
+        {id: 'NewDi&#39;s_Eccentric_Bloomed', name: 'NewDi&#39;s Eccentric Bloomed', image: 'images/natsume2/NewDi\'s_Eccentric_Bloomed.webp'},
+        {id: 'Payment_for_Divination', name: 'Payment for Divination', image: 'images/natsume2/Payment_for_Divination.webp'},
+        {id: 'Payment_for_Divination_Bloomed', name: 'Payment for Divination Bloomed', image: 'images/natsume2/Payment_for_Divination_Bloomed.webp'},
+        {id: 'Reassuring_Rock', name: 'Reassuring Rock', image: 'images/natsume2/Reassuring_Rock.webp'},
+        {id: 'Reassuring_Rock_Bloomed', name: 'Reassuring Rock Bloomed', image: 'images/natsume2/Reassuring_Rock_Bloomed.webp'},
+        {id: 'Scheming_AtoZ', name: 'Scheming AtoZ', image: 'images/natsume2/Scheming_AtoZ.webp'},
+        {id: 'Scheming_AtoZ_Bloomed', name: 'Scheming AtoZ Bloomed', image: 'images/natsume2/Scheming_AtoZ_Bloomed.webp'},
+        {id: 'The_God_of_Shinsekai', name: 'The God of Shinsekai', image: 'images/natsume2/The_God_of_Shinsekai.webp'},
+        {id: 'The_God_of_Shinsekai_Bloomed', name: 'The God of Shinsekai Bloomed', image: 'images/natsume2/The_God_of_Shinsekai_Bloomed.webp'},
+        {id: 'The_Liar_Game', name: 'The Liar Game', image: 'images/natsume2/The_Liar_Game.webp'},
+        {id: 'The_Liar_Game_Bloomed', name: 'The Liar Game Bloomed', image: 'images/natsume2/The_Liar_Game_Bloomed.webp'},
+        {id: 'True_Meaning_and_Blessings', name: 'True Meaning and Blessings', image: 'images/natsume2/True_Meaning_and_Blessings.webp'},
+        {id: 'True_Meaning_and_Blessings_Bloomed', name: 'True Meaning and Blessings Bloomed', image: 'images/natsume2/True_Meaning_and_Blessings_Bloomed.webp'},
+
+    ],
+    natsume : [
+        {id: '3rd_Anniversary', name: '3rd Anniversary', image: 'images/natsume/3rd_Anniversary.webp'},
+        {id: '3rd_Anniversary_Bloomed', name: '3rd Anniversary Bloomed', image: 'images/natsume/3rd_Anniversary_Bloomed.webp'},
+        {id: '4th_Anniversary', name: '4th Anniversary', image: 'images/natsume/4th_Anniversary.webp'},
+        {id: '4th_Anniversary_Bloomed', name: '4th Anniversary Bloomed', image: 'images/natsume/4th_Anniversary_Bloomed.webp'},
+        {id: 'Air_Force_Commander', name: 'Air Force Commander', image: 'images/natsume/Air_Force_Commander.webp'},
+        {id: 'Air_Force_Commander_Bloomed', name: 'Air Force Commander Bloomed', image: 'images/natsume/Air_Force_Commander_Bloomed.webp'},
+        {id: 'Contrarian_Magician', name: 'Contrarian Magician', image: 'images/natsume/Contrarian_Magician.webp'},
+        {id: 'Contrarian_Magician_Bloomed', name: 'Contrarian Magician Bloomed', image: 'images/natsume/Contrarian_Magician_Bloomed.webp'},
+        {id: 'Disaster_Splash', name: 'Disaster Splash', image: 'images/natsume/Disaster_Splash.webp'},
+        {id: 'Disaster_Splash_Bloomed', name: 'Disaster Splash Bloomed', image: 'images/natsume/Disaster_Splash_Bloomed.webp'},
+        {id: 'Eccentric_Secret', name: 'Eccentric Secret', image: 'images/natsume/Eccentric_Secret.webp'},
+        {id: 'Eccentric_Secret_Bloomed', name: 'Eccentric Secret Bloomed', image: 'images/natsume/Eccentric_Secret_Bloomed.webp'},
+        {id: 'Foreseeing_Eye', name: 'Foreseeing Eye', image: 'images/natsume/Foreseeing_Eye.webp'},
+        {id: 'Foreseeing_Eye_Bloomed', name: 'Foreseeing Eye Bloomed', image: 'images/natsume/Foreseeing_Eye_Bloomed.webp'},
+        {id: 'Guide_to_the_Future', name: 'Guide to the Future', image: 'images/natsume/Guide_to_the_Future.webp'},
+        {id: 'Guide_to_the_Future_Bloomed', name: 'Guide to the Future Bloomed', image: 'images/natsume/Guide_to_the_Future_Bloomed.webp'},
+        {id: 'Jewel_Ruby', name: 'Jewel Ruby', image: 'images/natsume/Jewel_Ruby.webp'},
+        {id: 'Jewel_Ruby_Bloomed', name: 'Jewel Ruby Bloomed', image: 'images/natsume/Jewel_Ruby_Bloomed.webp'},
+        {id: 'Mage_of_Flames', name: 'Mage of Flames', image: 'images/natsume/Mage_of_Flames.webp'},
+        {id: 'Mage_of_Flames_Bloomed', name: 'Mage of Flames Bloomed', image: 'images/natsume/Mage_of_Flames_Bloomed.webp'},
+        {id: 'Magical_Symbol', name: 'Magical Symbol', image: 'images/natsume/Magical_Symbol.webp'},
+        {id: 'Magical_Symbol_Bloomed', name: 'Magical Symbol Bloomed', image: 'images/natsume/Magical_Symbol_Bloomed.webp'},
+        {id: 'Magical_Witch', name: 'Magical Witch', image: 'images/natsume/Magical_Witch.webp'},
+        {id: 'Magical_Witch_Bloomed', name: 'Magical Witch Bloomed', image: 'images/natsume/Magical_Witch_Bloomed.webp'},
+        {id: 'Red-Haired_Onryo', name: 'Red-Haired Onryo', image: 'images/natsume/Red-Haired_Onryo.webp'},
+        {id: 'Red-Haired_Onryo_Bloomed', name: 'Red-Haired Onryo Bloomed', image: 'images/natsume/Red-Haired_Onryo_Bloomed.webp'},
+        {id: 'Red_Planet', name: 'Red Planet', image: 'images/natsume/Red_Planet.webp'},
+        {id: 'Red_Planet_Bloomed', name: 'Red Planet Bloomed', image: 'images/natsume/Red_Planet_Bloomed.webp'},
+        {id: 'Star_Lost_in_the_Sky', name: 'Star Lost in the Sky', image: 'images/natsume/Star_Lost_in_the_Sky.webp'},
+        {id: 'Star_Lost_in_the_Sky_Bloomed', name: 'Star Lost in the Sky Bloomed', image: 'images/natsume/Star_Lost_in_the_Sky_Bloomed.webp'},
+        {id: 'Switch&#39;s_Secrecy', name: 'Switch&#39;s Secrecy', image: 'images/natsume/Switch\'s_Secrecy.webp'},
+        {id: 'Switch&#39;s_Secrecy_Bloomed', name: 'Switch&#39;s Secrecy Bloomed', image: 'images/natsume/Switch\'s_Secrecy_Bloomed.webp'},
+        {id: 'The_Show_of_the_Oddballs', name: 'The Show of the Oddballs', image: 'images/natsume/The_Show_of_the_Oddballs.webp'},
+        {id: 'The_Show_of_the_Oddballs_Bloomed', name: 'The Show of the Oddballs Bloomed', image: 'images/natsume/The_Show_of_the_Oddballs_Bloomed.webp'},
+        {id: 'Trick_Sunshower', name: 'Trick Sunshower', image: 'images/natsume/Trick_Sunshower.webp'},
+        {id: 'Trick_Sunshower_Bloomed', name: 'Trick Sunshower Bloomed', image: 'images/natsume/Trick_Sunshower_Bloomed.webp'},
+        {id: 'Uniting_Class_Performance', name: 'Uniting Class Performance', image: 'images/natsume/Uniting_Class_Performance.webp'},
+        {id: 'Uniting_Class_Performance_Bloomed', name: 'Uniting Class Performance Bloomed', image: 'images/natsume/Uniting_Class_Performance_Bloomed.webp'},
+        {id: 'Wonder_Alice', name: 'Wonder Alice', image: 'images/natsume/Wonder_Alice.webp'},
+        {id: 'Wonder_Alice_Bloomed', name: 'Wonder Alice Bloomed', image: 'images/natsume/Wonder_Alice_Bloomed.webp'},
+    ],
+}
+
+const queryString = window.location.search;
+console.log(queryString);
+
+const urlParams = new URLSearchParams(queryString);
+
+//please im so tired js is holding my family hostage
+// grab the string
+const chr = urlParams.get('chrs');
+console.log(chr);
+// split it into an array
+var chrArr = chr.split(',')
+console.log(chrArr)
+// concat all the arrays together
+var choice = [];
+//skip the last (empty) item bc it breaks it for some reason
+var arrlen = chrArr.length - 1
+for(let i = 0; i < arrlen; i++){
+    let x = chrArr[i];
+    console.log(ChrOpt[x])
+    choice = choice.concat(ChrOpt[x]);
+    console.log(choice)
+}
+
+var items = choice;
+
+var myPicker = new picker.Picker({
+    items: items
+});
+
+var pickerUI = new PickerUI(myPicker, {
+    elements: {
+        pick: "#pick",
+        pass: "#pass",
+        undo: "#undo",
+        redo: "#redo",
+        evaluating: "#evaluating",
+        favorites: "#favorites"
+    }
+});
+
+pickerUI.initialize();
+
+/* Sortable favorites - you can safely remove this, and the Sortable.min.js script, if you don't want to be able to sort your favorite list. */
+var sortable = new Sortable(pickerUI.elem.favorites.get(0), {
+    draggable: '.item',
+    animation: 100,
+    onStart: function() {
+        pickerUI.elem.favorites.addClass("sorting");
+    },
+    onEnd: function() {
+        pickerUI.elem.favorites.removeClass("sorting");
+    },
+    onUpdate: function() {
+        myPicker.setFavorites(pickerUI.elem.favorites.children().map(function() {
+            return pickerUI.getItem(this);
+        }).get());
+        pickerUI.update(true);
+    }
+});
+/* End sortable favorites */
+</script>
+</body>
+</html>
